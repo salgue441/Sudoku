@@ -10,8 +10,32 @@
  */
 
 #include <iostream>
+#include <array>
 
-int main(int argc, char **argv)
+#include "Sudoku.h"
+
+int main()
 {
-    
+    std::array<int, 81> puzzle;
+    std::array<int, 81> origin;
+
+    Sudoku sudoku;
+
+    sudoku.generate_sudoku(puzzle, 1);
+    sudoku.copy_puzzle(puzzle, origin);
+
+    system("cls");
+
+    std::cout << sudoku.print_puzzle(puzzle, false) << std::endl;
+
+    char run;
+    std::cout << "Solve puzzle (y/n): ";
+    std::cin >> run;
+
+    if (run == 'y' || run == 'Y')
+        sudoku.solve_sudoku(puzzle, true);
+
+    sudoku.user_input(puzzle);
+
+    return 0;
 }

@@ -73,10 +73,10 @@ void Sudoku::generate_sudoku(std::array<int, 81> &puzzle,
         for (int j = 0; j < size; j++)
         {
             int value = rand() % 9 + 1;
+
             while (!is_valid(puzzle, i, j, value))
-            {
                 value = rand() % 9 + 1;
-            }
+
             puzzle[i * size + j] = value;
         }
     }
@@ -155,7 +155,7 @@ void Sudoku::copy_puzzle(std::array<int, 81> &puzzle, std::array<int, 81> &copy)
 void Sudoku::user_input(std::array<int, 81> &puzzle)
 {
     int row, col, value;
-    
+
     std::cout << "Enter row: ";
     std::cin >> row;
 
